@@ -93,6 +93,6 @@ Optional:
 <img src="https://i.imgur.com/GL7ti93.jpg" height=200>
 
 ### [BONUS] Interactive Prototype
-<img src="https://imgur.com/gallery/HJJttc6" width=200px  height= 400px>
+<img src="https://imgur.com/gallery/HJJttc6" width=200  height= 400>
 
 <a href="https://imgur.com/gallery/HJJttc6.gif">https://imgur.com/gallery/HJJttc6.gif</a>
