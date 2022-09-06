@@ -94,3 +94,5 @@ Optional:
 
 ### [BONUS] Interactive Prototype
 <img src="https://imgur.com/gallery/HJJttc6.gif" width=200>
+
+<a href="https://imgur.com/gallery/HJJttc6.gif">https://imgur.com/gallery/HJJttc6.gif</a>
