@@ -87,7 +87,7 @@ Optional:
 * Profile-> change Password,modify Mail, change picture.
 
 ## Wireframes
-<img src="https://i.imgur.com/fzDWl7Q.jpg?1" width=800><br>
+<img src="https://i.imgur.com/VL1TCAN.jpg?1" width=800><br>
 
 ### [BONUS] Digital Wireframes & Mockups
 <img src="https://i.imgur.com/GL7ti93.jpg" height=200>
