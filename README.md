@@ -1,9 +1,4 @@
-Unit 8: Group Milestone - README Example
-===
-
-
-
-# Mesajem
+# MESAJEM
 
 ## Table of Contents
 1. [Overview](#Overview)
