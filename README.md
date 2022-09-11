@@ -101,13 +101,42 @@ Optional:
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | objectId      | String   | unique id for the user post (default field) |
-   | author        | Pointer to User| image author |
-   | image         | File     | image that user posts |
+   | client        | Pointer to User| image author |
+   | image         | File     | image of the documents that user posts |
    | caption       | String   | image caption by author |
-   | commentsCount | Number   | number of comments that has been posted to an image |
-   | likesCount    | Number   | number of likes for the post |
    | createdAt     | DateTime | date when post is created (default field) |
    | updatedAt     | DateTime | date when post is last updated (default field) |
+   
+   #### Delivery
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | Deliverman    | Pointer to User| image author |
+   | emailVerified | String   | email of the user |
+   | Adress        | String   | Living adress |
+   | PhoneNum      | String   | Phone number of the user |
+   | Status        | boolean  | Active and Desactive the user if|
+   | Photos        | File     | Picture of the DeliveryMan |
+   | Geolocal      | Pointer to User  | position of the deliveryman|
+   | caption       | String   | image caption by author |
+   | createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+   
+   
+      #### User
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | emailVerified | String   | email of the user |
+   | Adress        | String   | Living adress |
+   | PhoneNum      | String   | Phone number of the user |
+   | Status        | boolean  | Active and Desactive the user if|
+   | Photos        | File     | Picture of the DeliveryMan |
+   | createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+   
 ### Networking
 #### List of network requests by screen
    - Home Feed Screen
