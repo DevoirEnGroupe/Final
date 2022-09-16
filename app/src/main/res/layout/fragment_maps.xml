@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.MapsFragment" >
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="30dp"
+            android:visibility="gone"
+            android:layout_height="30dp"
+            android:layout_marginTop="60dp"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tvimel"
+            android:layout_width="93dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="340dp"
+            android:text="imel"
+            android:gravity="top"
+            />
+        <TextView
+            android:id="@+id/tvaddresse"
+            android:layout_width="93dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="410dp"
+            android:text="adress"
+            android:gravity="top"
+            />
+        <TextView
+            android:id="@+id/tvsiyati"
+            android:layout_width="136dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="270dp"
+            android:text="siyati"
+            android:gravity="top"
+            />
+
+        <TextView
+            android:id="@+id/tvnon"
+            android:layout_width="244dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="200dp"
+            android:gravity="top"
+            android:text="non" />
+        <EditText
+            android:id="@+id/etnon"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="220dp"
+            android:inputType=""
+            android:hint="non"
+            />
+        <EditText
+            android:id="@+id/etsiyati"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="290dp"
+            android:inputType=""
+            android:hint="siyati"
+            />
+        <EditText
+            android:id="@+id/etimel"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:inputType=""
+            android:hint="imel"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="360dp"
+            />
+        <EditText
+            android:id="@+id/etadress"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:inputType=""
+            android:hint="adress"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="430dp"
+            />
+
+
+        <Button
+            android:id="@+id/btShare"
+            android:layout_width="224dp"
+            android:layout_height="43dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="85dp"
+            android:text="kontinye"
+            android:layout_centerInParent="true"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="565dp"
+            android:backgroundTint ="#F9A826"
+            />
+
+
+</RelativeLayout>
