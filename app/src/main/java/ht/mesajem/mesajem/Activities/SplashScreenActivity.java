@@ -24,7 +24,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         splach_im1 = findViewById(R.id.splach_im1);
-        splach_im2 = findViewById(R.id.splach_im2);
+        //splach_im2 = findViewById(R.id.splach_im2);
 
         new Handler()
                 .postDelayed( new Runnable() {

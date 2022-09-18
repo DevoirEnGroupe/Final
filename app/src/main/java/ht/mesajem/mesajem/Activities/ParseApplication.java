@@ -25,6 +25,7 @@ public class ParseApplication extends Application {
 
         ParseObject.registerSubclass(Post.class);
         ParseObject.registerSubclass(InfoPost.class);
+
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("XgpEGn5vBntafy0fVxJVFuGrcnQku6ZdsWZ1DSQg")
                 .clientKey("vpUnrU5VALPPRwvsHm2qvOnEuTooibAbZvnV4Nog")

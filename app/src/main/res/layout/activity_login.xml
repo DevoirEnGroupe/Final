@@ -45,7 +45,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginBottom="52dp"
         android:layout_toEndOf="@+id/textView"
         android:text="Sign Up"
@@ -99,7 +99,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="34dp"
         android:layout_marginTop="415dp"
-        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:layout_marginEnd="30dp"
+        android:drawableRight="@drawable/ic_baseline_lock_24"
         android:drawablePadding="20dp"
         android:hint="@string/passwad"
         android:inputType="" />
@@ -112,7 +113,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="34dp"
         android:layout_marginTop="335dp"
-        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:layout_marginEnd="30dp"
+        android:drawableRight="@drawable/ic_baseline_person_24"
         android:drawablePadding="20dp"
         android:ems="10"
         android:hint="@string/non_itiliza"
@@ -152,9 +154,19 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="283dp"
-        android:layout_marginTop="-236dp"
+        android:layout_marginTop="-241dp"
         android:layout_marginEnd="-74dp"
-        android:layout_marginBottom="396dp"
+        android:layout_marginBottom="401dp"
         app:srcCompat="@drawable/assest" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="48dp"
+        app:srcCompat="@drawable/mesajem_logo" />
 
 </RelativeLayout>

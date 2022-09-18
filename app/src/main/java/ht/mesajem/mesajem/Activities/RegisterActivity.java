@@ -29,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText etkodsekre1;
     EditText etkodsekre2;
     Button btKonekte1;
-    TextView bt_sign_in;
+    TextView tvLogin;
     String TAG ="RegisterActivity";
 
     @Override
@@ -46,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         etkodsekre1 =  findViewById(R.id.etkodsekre1) ;
         etkodsekre2 = findViewById(R.id.etkodsekre2)  ;
         btKonekte1 =  findViewById(R.id.btKonekte1)  ;
-        bt_sign_in =  findViewById(R.id.tvlogin)  ;
+        tvLogin =  findViewById(R.id.tvlogin)  ;
 
         btKonekte1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +91,16 @@ public class RegisterActivity extends AppCompatActivity {
 
                     }
                 });
+            }
+        });
+
+
+        tvLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(i);
+
             }
         });
 
