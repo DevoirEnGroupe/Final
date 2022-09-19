@@ -1,17 +1,11 @@
-package ht.mesajem.mesajem.Fragments;
+package ht.mesajem.mesajem.Activities;
 
-import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,11 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ht.mesajem.mesajem.Adapters.ReceiverAdapter;
+import ht.mesajem.mesajem.Adapters.ReceiverInfoAdapter;
+import ht.mesajem.mesajem.Models.InfoPost;
 import ht.mesajem.mesajem.Models.Post;
 import ht.mesajem.mesajem.R;
 
-
-public class ReceivedFragment extends Fragment {
+public class ReceivedActivity extends AppCompatActivity {
 
     RecyclerView rvPosts;
     ReceiverAdapter adapter;
@@ -36,35 +31,21 @@ public class ReceivedFragment extends Fragment {
     TextView tvreceive;
 
 
-    public ReceivedFragment() {
-        // Required empty public constructor
-    }
-
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_received, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        rvPosts = view.findViewById(R.id.rvPosts);
-        tvreceive = view.findViewById(R.id.tvreceive);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_received);
+        rvPosts = findViewById(R.id.rvPosts);
+        tvreceive = findViewById(R.id.tvreceive);
 
         posts = new ArrayList<>();
-        adapter = new ReceiverAdapter(posts,getContext());
+        adapter = new ReceiverAdapter(posts,this);
         rvPosts.setAdapter(adapter);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rvPosts.setLayoutManager(layoutManager);
         layoutManager.setReverseLayout(true);
         mFirstLoad=true;
         queryposts();
-
-
 
     }
 
@@ -80,7 +61,7 @@ public class ReceivedFragment extends Fragment {
                 for (Post post: posts){
 
                     Log.i("ok",  "keydate " +post.getCreatedAt()+", keyId " +post.getObjectId()+",username " +post.getUser().getUsername());
-                    Toast.makeText(getContext(), "keydate " +post.getCreatedAt()+", keyId " +post.getObjectId()+",username " +post.getUser().getUsername(), Toast.LENGTH_SHORT).show();
+
                 }
 
                 if(e == null){
@@ -98,6 +79,6 @@ public class ReceivedFragment extends Fragment {
 
             }
         });
-    }
 
+    }
 }

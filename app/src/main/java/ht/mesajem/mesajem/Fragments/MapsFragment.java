@@ -32,6 +32,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
@@ -110,7 +111,10 @@ public class MapsFragment extends Fragment {
                 String email = etimel.getText().toString();
 
                 ParseUser currentUser = ParseUser.getCurrentUser();
+
+
                 savePost(currentUser,lastname,firstname,email,addresse);
+
                 getFragmentManager()
                         .beginTransaction()
                         .replace(R.id.relativ, new PayementFragment())
@@ -123,8 +127,10 @@ public class MapsFragment extends Fragment {
 
 
 
+
     private void savePost(ParseUser currentUser, String lastname, String firstname, String email,String addresse) {
-        Post post = new Post();
+
+        InfoPost post = new InfoPost();
         post.setNom(lastname);
         post.setPrenom(firstname);
         post.setEmail(email);

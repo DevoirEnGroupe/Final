@@ -1,24 +1,20 @@
-package ht.mesajem.mesajem.Fragments;
+package ht.mesajem.mesajem.Activities;
 
-import static android.app.Activity.RESULT_OK;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.FileProvider;
-import androidx.fragment.app.Fragment;
-
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,39 +27,30 @@ import com.parse.SaveCallback;
 
 import java.io.File;
 
+import ht.mesajem.mesajem.Fragments.MapsFragment;
 import ht.mesajem.mesajem.Models.Post;
 import ht.mesajem.mesajem.R;
 
-public class SendFragment extends Fragment {
+public class SendActivity extends AppCompatActivity {
 
     public static final String TAG ="SendFragment";
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
-    Button SumbitB;
+    FragmentManager fragmentManager = getSupportFragmentManager();
     Button ButtonTakePic;
     TextView tvDocSend;
     ImageView PostImage;
+    ImageView send_id;
     public String photoFileName = "photo.jpg";
     File photoFile;
 
-
-    public SendFragment() {
-        // Required empty public constructor
-    }
-
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_send, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        ButtonTakePic = view.findViewById(R.id.ButtonTakePic);
-        PostImage = view.findViewById(R.id.PostImage);
-        tvDocSend = view.findViewById(R.id.tvDocSend);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_send);
+        ButtonTakePic = findViewById(R.id.ButtonTakePic);
+        PostImage = findViewById(R.id.PostImage);
+        tvDocSend = findViewById(R.id.tvDocSend);
+        send_id = findViewById(R.id.send_id);
 
         ButtonTakePic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,17 +62,19 @@ public class SendFragment extends Fragment {
                         public void onClick(View v) {
 
                             if(photoFile== null||PostImage.getDrawable()== null){
-                                Toast.makeText(getContext(),"ERROR PICTURE", Toast.LENGTH_LONG).show();
+                                Toast.makeText(SendActivity.this,"ERROR PICTURE", Toast.LENGTH_LONG).show();
                                 return;
                             }
                             ParseUser currentUser = ParseUser.getCurrentUser();
                             savePost(currentUser,photoFile);
-                           //Intent i = new Intent(getActivity(), MapsActivity.class);
-                           //startActivity(i);
-                            getFragmentManager()
-                                    .beginTransaction()
-                                    .replace(R.id.relativ, new MapsFragment())
-                                    .commit();
+                            //Intent i = new Intent(getActivity(), MapsActivity.class);
+                            //startActivity(i);
+                            ButtonTakePic.setVisibility(View.GONE);
+                            PostImage.setVisibility(View.GONE);
+                            tvDocSend.setVisibility(View.GONE);
+                            send_id.setVisibility(View.GONE);
+                            Fragment fragment= new MapsFragment();
+                            fragmentManager.beginTransaction().replace(R.id.relativ,fragment).commit();
                         }
                     });
                 }
@@ -103,12 +92,12 @@ public class SendFragment extends Fragment {
         // wrap File object into a content provider
         // required for API >= 24
         // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
-        Uri fileProvider = FileProvider.getUriForFile(getContext(), "com.codepath.fileprovider", photoFile);
+        Uri fileProvider = FileProvider.getUriForFile(this, "com.codepath.fileprovider", photoFile);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
         // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
         // So as long as the result is not null, it's safe to use the intent.
-        if (intent.resolveActivity(getContext().getPackageManager()) != null) {
+        if (intent.resolveActivity(this.getPackageManager()) != null) {
             // Start the image capture intent to take photo
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
         }
@@ -131,7 +120,7 @@ public class SendFragment extends Fragment {
         // Get safe storage directory for photos
         // Use `getExternalFilesDir` on Context to access package-specific directories.
         // This way, we don't need to request external read/write runtime permissions.
-        File mediaStorageDir = new File(getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG);
+        File mediaStorageDir = new File(this.getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG);
 
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()){
@@ -146,7 +135,7 @@ public class SendFragment extends Fragment {
 
 
 
-    private void savePost( ParseUser currentUser, File photoFile) {
+    private void savePost(ParseUser currentUser, File photoFile) {
         Post post = new Post();
         post.setKeyImage(new ParseFile(photoFile));
         post.setUser(currentUser);
@@ -155,7 +144,7 @@ public class SendFragment extends Fragment {
             public void done(ParseException e) {
                 if(e!= null){
                     Log.e(TAG, "error while save", e);
-                    Toast.makeText(getContext(),"error save", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SendActivity.this,"error save", Toast.LENGTH_LONG).show();
                 }
                 Log.i(TAG,"Save post");
                 PostImage.setImageResource(0);

@@ -59,35 +59,35 @@ public class Post extends ParseObject {
 
 
 
-    public String getNom(){
-        return getString(KEY_NOM);
-    }
-    public String getPrenom(){
-        return getString(KEY_PRENOM);
-    }
-    public String getEmail(){
-        return getString(KEY_EMAIL);
-    }
-    public String getAddresse(){
-        return getString(KEY_ADDRESSE);
-    }
-
-    public void setNom(String nom){
-        put(KEY_NOM,nom);
-    }
-
-    public void setPrenom(String prenom){
-        put(KEY_PRENOM,prenom);
-    }
-
-
-    public void setEmail(String email){
-        put(KEY_EMAIL,email);
-    }
-
-
-    public void setAddresse(String addresse){
-        put(KEY_ADDRESSE,addresse);
-    }
+//    public String getNom(){
+//        return getString(KEY_NOM);
+//    }
+//    public String getPrenom(){
+//        return getString(KEY_PRENOM);
+//    }
+//    public String getEmail(){
+//        return getString(KEY_EMAIL);
+//    }
+//    public String getAddresse(){
+//        return getString(KEY_ADDRESSE);
+//    }
+//
+//    public void setNom(String nom){
+//        put(KEY_NOM,nom);
+//    }
+//
+//    public void setPrenom(String prenom){
+//        put(KEY_PRENOM,prenom);
+//    }
+//
+//
+//    public void setEmail(String email){
+//        put(KEY_EMAIL,email);
+//    }
+//
+//
+//    public void setAddresse(String addresse){
+//        put(KEY_ADDRESSE,addresse);
+//    }
 
 }

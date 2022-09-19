@@ -1,17 +1,11 @@
-package ht.mesajem.mesajem.Fragments;
+package ht.mesajem.mesajem.Activities;
 
-import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,13 +16,11 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-import ht.mesajem.mesajem.Adapters.ReceiverAdapter;
 import ht.mesajem.mesajem.Adapters.SenderAdapter;
 import ht.mesajem.mesajem.Models.Post;
 import ht.mesajem.mesajem.R;
 
-
-public class TrackFragment extends Fragment {
+public class TrackActivity extends AppCompatActivity {
 
     RecyclerView rvPosts;
     SenderAdapter adapter;
@@ -36,32 +28,17 @@ public class TrackFragment extends Fragment {
     Boolean mFirstLoad;
     TextView tvsend;
 
-    public TrackFragment() {
-        // Required empty public constructor
-    }
-
-
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_track, container, false);
-    }
-
-
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        rvPosts = view.findViewById(R.id.rvPosts);
-        tvsend = view.findViewById(R.id.tvsend);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_track);
+        rvPosts = findViewById(R.id.rvPosts);
+        tvsend = findViewById(R.id.tvsend);
 
         posts = new ArrayList<>();
-        adapter = new SenderAdapter(posts,getContext());
+        adapter = new SenderAdapter(posts,this);
         rvPosts.setAdapter(adapter);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rvPosts.setLayoutManager(layoutManager);
         layoutManager.setReverseLayout(true);
         mFirstLoad=true;
@@ -82,8 +59,8 @@ public class TrackFragment extends Fragment {
 
                 for (Post post: posts){
 
-                    Log.i("ok",  "keydate " +post.getCreatedAt()+", keyId " +post.getObjectId()+",username " +post.getNom());
-                    Toast.makeText(getContext(), "keydate " +post.getCreatedAt()+", keyId " +post.getObjectId()+",username " +post.getNom(), Toast.LENGTH_SHORT).show();
+                    Log.i("ok",  "keydate " +post.getCreatedAt()+", keyId " +post.getObjectId()+",username ");
+
                 }
 
                 if(e == null){

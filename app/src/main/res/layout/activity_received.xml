@@ -4,25 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.TrackFragment">
+    tools:context=".Activities.ReceivedActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/RvLt1">
+        android:id="@+id/RvLt">
         <View
-            android:id="@+id/some_id1"
+            android:id="@+id/some_id"
             android:layout_width="260dp"
             android:layout_height="196dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="78dp"
             android:layout_marginTop="47dp"
-            android:background="@drawable/ic__309_5__1_"/>
+            android:background="@drawable/ic_8309_4"/>
 
 
         <TextView
-            android:id="@+id/tvsend"
+            android:id="@+id/tvreceive"
             android:layout_width="160dp"
             android:layout_height="24dp"
             android:layout_alignParentStart="true"
@@ -30,17 +30,17 @@
             android:layout_marginStart="127dp"
             android:layout_marginTop="260dp"
             android:gravity="center"
-            android:text="@string/resevwa_dok1" />
+            android:text="@string/resevwa_dok" />
 
 
     </RelativeLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/RvLt"
         android:id="@+id/rvPosts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/RvLt1"
         android:clipToPadding="false"
         android:padding="8dp" />
 
