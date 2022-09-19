@@ -21,7 +21,7 @@
         android:clipToOutline="true"
         android:contentDescription="@string/image"
         android:elevation="10dp"
-        android:foreground="@drawable/mesajem_logo_bwt"
+        android:foreground="@drawable/mesajem_logo_final"
         android:outlineSpotShadowColor="@color/black" />
 
     <TextView
@@ -35,7 +35,7 @@
         android:layout_marginTop="208dp"
         android:layout_marginEnd="67dp"
         android:text="MESAJEM"
-        android:textColor="@color/white"
+        android:textColor="@color/Blue"
         android:textSize="48sp"
         android:textStyle="bold" />
 
@@ -50,6 +50,6 @@
         android:layout_marginTop="0dp"
         android:layout_marginEnd="50dp"
         android:text="securely transfer your documents"
-        android:textColor="@color/white" />
+        android:textColor="@color/Blue" />
 
 </RelativeLayout>
