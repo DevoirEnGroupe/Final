@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="154dp"
         android:layout_marginTop="48dp"
-        app:srcCompat="@drawable/mesajem_logo" />
+        app:srcCompat="@drawable/mesajem_logo_final" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -207,7 +207,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="133dp"
         android:text="Create Account"
-        android:textColor="@color/black"
+        android:textColor="@color/Blue"
         android:textSize="32sp"
         android:textStyle="bold" />
 

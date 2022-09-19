@@ -73,7 +73,7 @@
         android:layout_marginStart="34dp"
         android:layout_marginTop="213dp"
         android:text="LOGIN "
-        android:textColor="@color/black"
+        android:textColor="@color/Blue"
         android:textSize="32sp"
         android:textStyle="bold" />
 
@@ -167,6 +167,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="154dp"
         android:layout_marginTop="48dp"
-        app:srcCompat="@drawable/mesajem_logo" />
+        app:srcCompat="@drawable/mesajem_logo_final" />
 
 </RelativeLayout>
