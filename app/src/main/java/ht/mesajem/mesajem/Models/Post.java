@@ -52,10 +52,10 @@ public class Post extends ParseObject {
         put(KEY_CREATED_AT,createdAt);
     }
 
-    public Boolean getStatus(){
-        return getBoolean(KEY_STATUS);
+    public Number getStatus(){
+        return getNumber(KEY_STATUS);
     }
-    public void setStatus(Boolean status){
+    public void setStatus(Number status){
         put(KEY_STATUS,status);
     }
 

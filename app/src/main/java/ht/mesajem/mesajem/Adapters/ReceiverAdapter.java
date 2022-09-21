@@ -109,7 +109,10 @@ public class ReceiverAdapter extends RecyclerView.Adapter<ReceiverAdapter.ViewHo
 
             userexped.setText(post.getUser().getUsername());
 
-            if(post.getStatus().equals(false)){
+            if(post.getStatus().equals(0)){
+                statusDoc.setText(R.string.pending);
+            }
+            else if(post.getStatus().equals(1)){
                 statusDoc.setText(R.string.transit);
             }
             else{

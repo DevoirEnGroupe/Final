@@ -55,12 +55,6 @@ public class ReceivedActivity extends AppCompatActivity {
             @Override
             public void done(List<Post> posts, ParseException e) {
 
-                for (Post post: posts){
-
-                    Log.i("ok",  "keydate " +post.getCreatedAt()+", keyId " +post.getObjectId()+",username " +post.getUser().getUsername());
-
-                }
-
                 if(e == null){
                     adapter.clear();
                     adapter.addAll(posts);

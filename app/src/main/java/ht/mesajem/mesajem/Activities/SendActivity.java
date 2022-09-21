@@ -93,6 +93,12 @@ public class SendActivity extends AppCompatActivity {
                             ParseUser currentUser = ParseUser.getCurrentUser();
                             savePost(currentUser,photoFile,lastname,firstname,email,addresse);
 
+
+                            tvadress.setVisibility(View.GONE);
+                            tvsiyati.setVisibility(View.GONE);
+                            tvimel.setVisibility(View.GONE);
+                            tvnon.setVisibility(View.GONE);
+
                             ButtonTakePic.setVisibility(View.GONE);
                             PostImage.setVisibility(View.GONE);
                             tvDocSend.setVisibility(View.GONE);
