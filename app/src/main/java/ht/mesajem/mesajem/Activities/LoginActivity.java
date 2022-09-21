@@ -1,9 +1,11 @@
 package ht.mesajem.mesajem.Activities;
 
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -35,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     GoogleSignInClient googleSignInClient;
     String TAG = "LoginActivity";
     FragmentManager fragmentManager = getSupportFragmentManager();
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,16 +68,25 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             private void loginUser(String username, String password) {
+
+//                progressDialog.show();
+
                 Log.i(TAG,"Trying to login user" +username);
                 //Navigate to the main activity if the user has signed properly
                 ParseUser.logInInBackground(username, password, new LogInCallback() {
+
                     @Override
                     public void done(ParseUser user, ParseException e) {
+//                        progressDialog.dismiss();
                         if(e!=null){
+
+                            ParseUser.logOut();
+                            showAlert("Login Fail", e.getMessage() + " Please try again", true);
                             Log.e(TAG, "Issue with Login",e);
                             return;
                         }
                         goMainActivity();
+                        showAlert("Login Successful", "Welcome, " + username + "!", false);
                     }
                 });
             }
@@ -96,5 +108,22 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(i);
         finish();;
     }
+
+
+    private void showAlert(String title, String message, boolean error) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", (dialog, which) -> {
+                    dialog.cancel();
+                    // don't forget to change the line below with the names of your Activities
+                    if (!error) {
+                        return;
+                    }
+                });
+        AlertDialog ok = builder.create();
+        ok.show();
+    }
+
 
 }

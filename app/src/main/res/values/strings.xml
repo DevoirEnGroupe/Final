@@ -15,4 +15,6 @@
     <string name="felisitasyo">FELISITASYON OU RIVE PEYE</string>
     <string name="resevwa_dok">RESEVWA DOKIMAN</string>
     <string name="resevwa_dok1">DOKIMAN MWEN VOYE</string>
+    <string name="transit">TRANSIT</string>
+    <string name="transit_ok">OK</string>
 </resources>

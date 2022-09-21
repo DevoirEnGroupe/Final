@@ -17,6 +17,17 @@
             android:gravity="top"
              />
 
+    <TextView
+        android:id="@+id/statusDoc"
+        android:layout_width="115dp"
+        android:layout_height="15dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:gravity="top"
+        />
+
 
     <ImageView
         android:id="@+id/postuser"

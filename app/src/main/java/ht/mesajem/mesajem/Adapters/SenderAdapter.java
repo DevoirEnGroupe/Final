@@ -76,6 +76,7 @@ public class SenderAdapter extends RecyclerView.Adapter<SenderAdapter.ViewHolder
             TextView userexped;
             TextView  datedepart;
             TextView datereceived;
+            TextView statusDoc;
             RelativeLayout itemview;
 
 
@@ -83,7 +84,7 @@ public class SenderAdapter extends RecyclerView.Adapter<SenderAdapter.ViewHolder
                 super(itemView);
 
                 objectid = itemView.findViewById(R.id.objectid);
-
+                statusDoc= itemView.findViewById(R.id.statusDoc);
                 postuser = itemView.findViewById(R.id.postuser);
                 userexped = itemView.findViewById(R.id.userexped);
                 datedepart = itemView.findViewById(R.id.datedepart);
@@ -105,6 +106,14 @@ public class SenderAdapter extends RecyclerView.Adapter<SenderAdapter.ViewHolder
                 }
 
                 userexped.setText(post.getUser().getUsername());
+
+                if(post.getStatus().equals(false)){
+                    statusDoc.setText(R.string.transit);
+                }
+                else{
+                    statusDoc.setText(R.string.transit_ok);
+                }
+
                 //datedepart.setText(post.getKeyCreatedAt());
 
                 itemview.setOnClickListener(new View.OnClickListener() {
