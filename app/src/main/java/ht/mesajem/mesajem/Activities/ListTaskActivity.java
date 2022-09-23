@@ -1,15 +1,24 @@
 package ht.mesajem.mesajem.Activities;
 
+import static androidx.fragment.app.FragmentManager.TAG;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
+
 
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 
+import ht.mesajem.mesajem.Models.Delivery;
 import ht.mesajem.mesajem.R;
 
 public class ListTaskActivity extends AppCompatActivity {
@@ -18,6 +27,7 @@ public class ListTaskActivity extends AppCompatActivity {
     RelativeLayout trackNavigation;
     RelativeLayout  sendNavigation;
     RelativeLayout receivedNavigation;
+    String TAG = "ListTaskActivity";
 
 
     @Override
@@ -58,5 +68,50 @@ public class ListTaskActivity extends AppCompatActivity {
             }
         });
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.switchitem,menu);
+        return  true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Delivery delivery = new Delivery();
+
+        if(item.getItemId()== R.id.checkable_menu) {
+
+                //showAlert("DELIVERY MAN", "SORRY YOU'RE NOT A MESAJEM DELIVERY IF YOU WANNA BECOME A DELIVERY" +
+                        //"PLEASE CONTACT US");
+                showAlert("DELIVERY MAN", "WELCOME" + delivery.get("status").getClass());
+                //return true;
+                Log.i(TAG,"STATUS" + delivery.get("status").getClass());
+
+
+            //showAlert("DELIVERY MAN", "WELCOME");
+            //Intent intent = new Intent(ListTaskActivity.this, MainDeliveyActivity.class);
+            //startActivity(intent);
+            //return false;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+    private void showAlert(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ListTaskActivity.this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", (dialog, which) -> {
+                    dialog.cancel();
+                    // don't forget to change the line below with the names of your Activities
+
+                });
+        AlertDialog ok = builder.create();
+        ok.show();
     }
 }

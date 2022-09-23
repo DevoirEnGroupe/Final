@@ -10,38 +10,15 @@
    >
 
 
-    <!--    <RelativeLayout-->
-<!--        android:id="@+id/SecondRel"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content">-->
-
-
-<!--        <ImageView-->
-<!--            android:id="@+id/receivedNavigation"-->
-<!--            android:layout_width="192dp"-->
-<!--            android:layout_height="114dp"-->
-<!--            android:layout_alignParentTop="true"-->
-<!--            android:contentDescription="received"-->
-<!--            android:src="@drawable/track2" />-->
-
-<!--    </RelativeLayout>-->
-
-
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/ThirdRel"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/SecondRel">-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/trackNavigation"-->
-<!--            android:layout_width="192dp"-->
-<!--            android:layout_height="114dp"-->
-<!--            android:layout_alignParentTop="true"-->
-<!--            android:contentDescription="received"-->
-<!--            android:src="@drawable/track" />-->
-
-<!--    </RelativeLayout>-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/white"
+        app:layout_scrollFlags="scroll|enterAlways"
+        >
+    </androidx.appcompat.widget.Toolbar>
 
     <RelativeLayout
         android:id="@+id/FirstRel"

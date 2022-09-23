@@ -18,4 +18,5 @@
     <string name="pending">NOT YET</string>
     <string name="transit">TRANSIT</string>
     <string name="transit_ok">OK</string>
+    <string name="checkable">DELIVERY MAN</string>
 </resources>

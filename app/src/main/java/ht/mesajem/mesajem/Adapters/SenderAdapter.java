@@ -105,9 +105,12 @@ public class SenderAdapter extends RecyclerView.Adapter<SenderAdapter.ViewHolder
                     Log.e("objectid","nul objectid");
                 }
 
-                userexped.setText(post.getUser().getUsername());
+                userexped.setText(post.getNom());
 
-                if(post.getStatus().equals(false)){
+                if(post.getStatus().equals(0)){
+                    statusDoc.setText(R.string.pending);
+                }
+                else if(post.getStatus().equals(1)){
                     statusDoc.setText(R.string.transit);
                 }
                 else{

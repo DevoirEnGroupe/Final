@@ -1,31 +1,28 @@
 package ht.mesajem.mesajem.Activities;
 
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.common.SignInButton;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-
+import ht.mesajem.mesajem.Models.Delivery;
+import ht.mesajem.mesajem.Models.Post;
 import ht.mesajem.mesajem.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginDeliveryActivity extends AppCompatActivity {
 
     TextView tvnonitiliza;
     TextView tvpaswod;
@@ -33,26 +30,22 @@ public class LoginActivity extends AppCompatActivity {
     EditText etpaswod;
     Button btKonekte;
     TextView tvenskri;
-    String TAG = "LoginActivity";
+    String TAG = "LoginDeliveryActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_delivery_login);
 
-
-      if(ParseUser.getCurrentUser()!=null){
-        goMainActivity();
-       }
 
         // Assign variable
-        tvenskri= findViewById(R.id.tvenskri);
+
         btKonekte = findViewById(R.id.btKonekte);
         etpaswod = findViewById(R.id.etpaswod);
         etnonitiliza= findViewById(R.id.etnonitiliza);
         tvpaswod= findViewById(R.id.tvpaswod);
         tvnonitiliza = findViewById(R.id.tvnonitiliza);
-        //btSignIn=findViewById(R.id.bt_sign_in);
+
 
 
         btKonekte.setOnClickListener(new View.OnClickListener() {
@@ -66,61 +59,54 @@ public class LoginActivity extends AppCompatActivity {
 
             private void loginUser(String username, String password) {
 
-//                progressDialog.show();
+                ParseQuery<Delivery> query = ParseQuery.getQuery(Delivery.class);
+                query.include(Delivery.KEY_POST_ACC);
+                
+                query.getInBackground("<PARSE_OBJECT_ID>", (object, e) -> {
+                    if (e == null) {
 
-                Log.i(TAG,"Trying to login user" +username);
-                //Navigate to the main activity if the user has signed properly
-                ParseUser.logInInBackground(username, password, new LogInCallback() {
+                        ParseUser.logInInBackground(username, password, new LogInCallback() {
 
-                    @Override
-                    public void done(ParseUser user, ParseException e) {
+                            @Override
+                            public void done(ParseUser user, ParseException e) {
 //                        progressDialog.dismiss();
-                        if(e!=null){
+                                goMainActivity();
+                                showAlert("Login Successful", "Welcome, " + username + "!", false);
+                            }
+                        });
+                    } else {
 
-                            ParseUser.logOut();
-                            showAlert("Login Fail", e.getMessage() + " Please try again", true);
-                            Log.e(TAG, "Issue with Login",e);
-                            return;
-                        }
-                        goMainActivity();
-                        showAlert("Login Successful", "Welcome, " + username + "!", false);
+                        showAlert("Login Fail", e.getMessage() + " Please try again", true);
+                        Log.e(TAG, "Issue with Login",e);
+
                     }
                 });
-            }
-        });
-
-        tvenskri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(i);
 
             }
         });
-
     }
 
+
+
     private void goMainActivity() {
-        Intent i = new Intent(LoginActivity.this, ListTaskActivity.class);
+        Intent i = new Intent(LoginDeliveryActivity.this, MainDeliveyActivity.class);
         startActivity(i);
-        finish();;
+        finish();
     }
 
 
     private void showAlert(String title, String message, boolean error) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this)
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginDeliveryActivity.this)
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton("OK", (dialog, which) -> {
                     dialog.cancel();
                     // don't forget to change the line below with the names of your Activities
                     if (!error) {
-                        return;
+
                     }
                 });
         AlertDialog ok = builder.create();
         ok.show();
     }
-
-
 }

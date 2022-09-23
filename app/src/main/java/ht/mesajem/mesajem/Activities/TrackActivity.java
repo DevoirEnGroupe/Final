@@ -57,11 +57,6 @@ public class TrackActivity extends AppCompatActivity {
             @Override
             public void done(List<Post> posts, ParseException e) {
 
-                for (Post post: posts){
-
-                    Log.i("ok",  "keydate " +post.getCreatedAt()+", keyId " +post.getObjectId()+",username ");
-
-                }
 
                 if(e == null){
                     adapter.clear();

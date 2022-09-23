@@ -5,6 +5,7 @@ import android.app.Application;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
+import ht.mesajem.mesajem.Models.Delivery;
 import ht.mesajem.mesajem.Models.Post;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -23,7 +24,7 @@ public class ParseApplication extends Application {
         builder.networkInterceptors().add(httpLoggingInterceptor);
 
         ParseObject.registerSubclass(Post.class);
-
+        ParseObject.registerSubclass(Delivery.class);
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("XgpEGn5vBntafy0fVxJVFuGrcnQku6ZdsWZ1DSQg")
                 .clientKey("vpUnrU5VALPPRwvsHm2qvOnEuTooibAbZvnV4Nog")
