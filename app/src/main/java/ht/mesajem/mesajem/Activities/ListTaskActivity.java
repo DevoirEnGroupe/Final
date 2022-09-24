@@ -13,10 +13,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
+
+import java.util.List;
 
 import ht.mesajem.mesajem.Models.Delivery;
 import ht.mesajem.mesajem.R;
@@ -80,15 +87,29 @@ public class ListTaskActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        Delivery delivery = new Delivery();
 
         if(item.getItemId()== R.id.checkable_menu) {
+            ParseQuery<Delivery> query = ParseQuery.getQuery(Delivery.class);
+            query.include(Delivery.KEY_POST_ACC);
+            query.findInBackground(new FindCallback<Delivery>() {
+                @Override
+                public void done(List<Delivery> deliverys, ParseException e) {
+
+                    for(Delivery delivery:deliverys){
+
+                    }
+
+                }
+            });
+
+            // The query will search for a ParseObject, given its objectId.
+            // When the query finishes running, it will invoke the GetCallback
+            // with either the object, or the exception thrown
+
 
                 //showAlert("DELIVERY MAN", "SORRY YOU'RE NOT A MESAJEM DELIVERY IF YOU WANNA BECOME A DELIVERY" +
                         //"PLEASE CONTACT US");
-                showAlert("DELIVERY MAN", "WELCOME" + delivery.get("status").getClass());
-                //return true;
-                Log.i(TAG,"STATUS" + delivery.get("status").getClass());
+
 
 
             //showAlert("DELIVERY MAN", "WELCOME");
